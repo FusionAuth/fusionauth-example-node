@@ -1,3 +1,18 @@
 # FusionAuth Node.js example
 
 This project is a simple example Node.js application that illustrates how to integrate with FusionAuth's OAuth system using the Authorization Code Grant.
+
+## To run
+
+This assumes you already have a running FusionAuth instance, user and application. If you don't, please see the [5-Minute Setup Guide](https://fusionauth.io/docs/v1/tech/5-minute-setup-guide) to do so.
+
+* update your FusionAuth application to allow a redirect of `http://localhost:3000/oauth-redirect`
+* make sure your user has a first name.
+* `npm install`
+* update `routes/index.js` and `views/index.pug` with the client id of your FusionAuth application.
+* add in your client secret
+* `npm start`
+
+Go to http://localhost:3000/ and login with the previously created user.
+
+You should end up with 'Hello <name>'
