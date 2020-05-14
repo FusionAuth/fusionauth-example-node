@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/node-client');
-const client = new FusionAuthClient('6b87a398-39f2-4692-927b-13188a81a9a3', 'http://localhost:9011');
+const clientId = 'dbfc584e-8b46-4e73-9046-cba9938ec4e0';
+const clientSecret = 'eMcurLTOG_aWodrbny2-oDN5Pugu_YI8oVf8gpYOKao';
+const client = new FusionAuthClient(clientId, 'http://localhost:9011');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -12,8 +14,8 @@ router.get('/', function (req, res, next) {
 router.get('/oauth-redirect', function (req, res, next) {
   // This code stores the user in a server-side session
   client.exchangeOAuthCodeForAccessToken(req.query.code,
-                                         '48cf2492-508d-4644-95eb-3741618821a4',
-                                         'p2GT7-xQkDE9AU8coePqVDJ6tMgS1XKu602FrW7kjiM',
+                                         clientId,
+                                         clientSecret,
                                          'http://localhost:3000/oauth-redirect')
       .then((response) => {
         return client.retrieveUserUsingJWT(response.successResponse.access_token);
@@ -27,8 +29,8 @@ router.get('/oauth-redirect', function (req, res, next) {
 
   // This code pushes the access and refresh tokens back to the browser as secure, HTTP-only cookies
   // client.exchangeOAuthCodeForAccessToken(req.query.code,
-  //                                        '48cf2492-508d-4644-95eb-3741618821a4',
-  //                                        'p2GT7-xQkDE9AU8coePqVDJ6tMgS1XKu602FrW7kjiM',
+  //                                        clientId,
+  //                                        clientSecret,
   //                                        'http://localhost:3000/oauth-redirect')
   //     .then((response) => {
   //       res.cookie('access_token', response.successResponse.access_token, {httpOnly: true});
