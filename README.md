@@ -10,7 +10,7 @@ This assumes you already have a running FusionAuth instance, user and applicatio
 * make sure your user has a first name.
 * `npm install`
 * update `routes/index.js` and `views/index.pug` with the client id of your FusionAuth application.
-* add in your client secret
+* update `routes/index.js` with your client secret.
 * `npm start`
 
 Go to http://localhost:3000/ and login with the previously created user.
