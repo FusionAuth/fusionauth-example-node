@@ -1,6 +1,6 @@
 # FusionAuth Node.js example
 
-This project is a simple example Node.js application that illustrates how to integrate with FusionAuth's OAuth system using the Authorization Code Grant.
+This project is a simple example Node.js application that illustrates how to integrate with FusionAuth's OAuth system using the Authorization Code grant.
 
 ## To run
 
@@ -15,4 +15,4 @@ This assumes you already have a running FusionAuth instance, user and applicatio
 
 Go to http://localhost:3000/ and login with the previously created user.
 
-You should end up with 'Hello <name>'
+You should see 'Hello <name>'
