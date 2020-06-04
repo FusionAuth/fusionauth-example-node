@@ -4,7 +4,7 @@ This project is a simple example Node.js application that illustrates how to int
 
 ## To run
 
-This assumes you already have a running FusionAuth instance, user and application. If you don't, please see the [5-Minute Setup Guide](https://fusionauth.io/docs/v1/tech/5-minute-setup-guide) to do so.
+This assumes you already have a running FusionAuth instance, user and application running locally. If you don't, please see the [5-Minute Setup Guide](https://fusionauth.io/docs/v1/tech/5-minute-setup-guide) to do so.
 
 * update your FusionAuth application to allow a redirect of `http://localhost:3000/oauth-redirect`
 * make sure your user has a first name.
