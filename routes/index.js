@@ -13,12 +13,12 @@ router.get('/', function (req, res, next) {
 /* OAuth return from FusionAuth */
 router.get('/oauth-redirect', function (req, res, next) {
   // This code stores the user in a server-side session
-  console.log("here");
   client.exchangeOAuthCodeForAccessToken(req.query.code,
                                          clientId,
                                          clientSecret,
                                          'http://localhost:3000/oauth-redirect')
       .then((response) => {
+        console.log(response.response.access_token);
         return client.retrieveUserUsingJWT(response.response.access_token);
       })
       .then((response) => {
