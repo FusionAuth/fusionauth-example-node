@@ -2,11 +2,11 @@ extends layout
 
 
 block content
-  - var clientId = 'dbfc584e-8b46-4e73-9046-cba9938ec4e0'
+  - var clientId = 'a5d84462-193d-4c0d-9f20-d05a8a584710'
   h1= title
   if user
     p Hello #{user.firstName}
   else
-    a(href='http://localhost:9011/oauth2/authorize?client_id='+clientId+'&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth-redirect&scope=offline_access') Login
+    a(href='http://localhost:9011/oauth2/authorize?client_id='+clientId+'&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth-redirect&scope=offline_access&state='+stateValue) Login
 
   p Welcome to #{title}

@@ -1,18 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
-const clientId = 'dbfc584e-8b46-4e73-9046-cba9938ec4e0';
-const clientSecret = 'eMcurLTOG_aWodrbny2-oDN5Pugu_YI8oVf8gpYOKao';
+const clientId = 'a5d84462-193d-4c0d-9f20-d05a8a584710';
+const clientSecret = 'm-WaqEcvIIzghwy_uVtxoqFtVSrLoDpU76gG2V9RPX8';
 const client = new FusionAuthClient('noapikeyneeded', 'http://localhost:9011');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', {user: req.session.user, title: 'FusionAuth Example'});
+  const stateValue = Math.random().toString(36).substring(2,15) + Math.random().toString(36).substring(2,15) + Math.random().toString(36).substring(2,15) + Math.random().toString(36).substring(2,15) + Math.random().toString(36).substring(2,15) + Math.random().toString(36).substring(2,15);
+  req.session.stateValue = stateValue
+  res.render('index', {user: req.session.user, stateValue: stateValue, title: 'FusionAuth Example'});
 });
 
 /* OAuth return from FusionAuth */
 router.get('/oauth-redirect', function (req, res, next) {
   // This code stores the user in a server-side session
+  const stateFromServer = req.query.state;
+  if (stateFromServer !== req.session.stateValue) {
+    console.log("State doesn't match. uh-oh.");
+    console.log("Saw: "+stateFromServer+ ", but expected: "+req.session.stateValue);
+    res.redirect(302, '/');
+    return;
+  }
   client.exchangeOAuthCodeForAccessToken(req.query.code,
                                          clientId,
                                          clientSecret,
