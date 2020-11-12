@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
-const clientId = '523e4989-a333-4f9f-bb91-9f7cb0d03364';
-const clientSecret = 'JxmpvKVZfUAG4QWfPvT-yTuSF-NJe0sKyWcOJLKsNDA';
+const clientId = 'fusionauth-application-clientid-here';
+const clientSecret = 'fusionauth-application-client-secret-here';
 const client = new FusionAuthClient('noapikeyneeded', 'http://localhost:9011');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
   const stateValue = Math.random().toString(36).substring(2,15) + Math.random().toString(36).substring(2,15) + Math.random().toString(36).substring(2,15) + Math.random().toString(36).substring(2,15) + Math.random().toString(36).substring(2,15) + Math.random().toString(36).substring(2,15);
   req.session.stateValue = stateValue
-  res.render('index', {user: req.session.user, stateValue: stateValue, title: 'FusionAuth Example'});
+  res.render('index', {user: req.session.user, stateValue: stateValue, title: 'FusionAuth Example',clientId: clientId});
 });
 
 /* OAuth return from FusionAuth */
