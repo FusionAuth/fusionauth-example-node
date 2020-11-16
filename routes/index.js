@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
-const clientId = 'YOUR CLIENT_ID HERE';
-const clientSecret = 'YOUR CLIENT_SECRET HERE';
+const clientId = 'fusionauth-application-clientid-here';
+const clientSecret = 'fusionauth-application-client-secret-here';
 const client = new FusionAuthClient('noapikeyneeded', 'http://localhost:9011');
 const pkceChallenge = require('pkce-challenge');
 
@@ -20,6 +20,7 @@ router.get('/', function (req, res, next) {
         user: req.session.user,
         stateValue: stateValue,
         title: 'FusionAuth Example',
+        clientId: clientId,
         challenge: challenge
     });
 });
