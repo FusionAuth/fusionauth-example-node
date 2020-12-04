@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
-const clientId = 'dbfc584e-8b46-4e73-9046-cba9938ec4e0';
-const clientSecret = 'eMcurLTOG_aWodrbny2-oDN5Pugu_YI8oVf8gpYOKao';
-const client = new FusionAuthClient('noapikeyneeded', 'http://localhost:9011');
+const clientId = '97aff5bb-e454-4e69-acd1-047ba67123af'
+const clientSecret = 'V2oqdjcS0YNJzk1zY6kLQs9oEd-FE9OFpuPJZeziuDM';
+const client = new FusionAuthClient('noapikeyneeded', 'https://team-bam.fusionauth.io');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -19,6 +19,7 @@ router.get('/oauth-redirect', function (req, res, next) {
                                          clientSecret,
                                          'http://localhost:3000/oauth-redirect')
       .then((response) => {
+        console.log(response.response.access_token);
         return client.retrieveUserUsingJWT(response.response.access_token);
       })
       .then((response) => {
