@@ -2,12 +2,11 @@ extends layout
 
 
 block content
-  - var clientId = '97aff5bb-e454-4e69-acd1-047ba67123af'
-
+  - var clientId = 'dbfc584e-8b46-4e73-9046-cba9938ec4e0'
   h1= title
   if user
     p Hello #{user.firstName}
   else
-    a(href='https://team-bam.fusionauth.io/oauth2/authorize?client_id=97aff5bb-e454-4e69-acd1-047ba67123af&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth-redirect') Login
+    a(href='http://localhost:9011/oauth2/authorize?client_id='+clientId+'&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth-redirect&scope=offline_access') Login
 
   p Welcome to #{title}
