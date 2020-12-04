@@ -2,19 +2,12 @@ extends layout
 
 
 block content
-<<<<<<< HEAD
   - var clientId = '97aff5bb-e454-4e69-acd1-047ba67123af'
 
-=======
->>>>>>> 101f8041f44c7063edc0b655543c2b4cafc5267e
   h1= title
   if user
     p Hello #{user.firstName}
   else
-<<<<<<< HEAD
     a(href='https://team-bam.fusionauth.io/oauth2/authorize?client_id=97aff5bb-e454-4e69-acd1-047ba67123af&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth-redirect') Login
-=======
-    a(href='http://localhost:9011/oauth2/authorize?client_id='+clientId+'&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth-redirect&scope=offline_access&state='+stateValue+'&code_challenge='+challenge+'&code_challenge_method=S256') Login
->>>>>>> 101f8041f44c7063edc0b655543c2b4cafc5267e
 
   p Welcome to #{title}
