@@ -2,18 +2,17 @@ const express = require('express');
 const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
 const clientId = 'dbfc584e-8b46-4e73-9046-cba9938ec4e0';
-const clientSecret = 'eMcurLTOG_aWodrbny2-oDN5Pugu_YI8oVf8gpYOKao';
+const clientSecret = 'g52dmIF-2PCYlv4Pio0gd_vvd_ZO2TW8aRZpCER4QZw';
 const client = new FusionAuthClient('noapikeyneeded', 'http://localhost:9011');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', {user: req.session.user, title: 'FusionAuth Example'});
+  res.render('index', {user: req.session.user, title: 'FusionAuth Example', clientId: clientId});
 });
 
 /* OAuth return from FusionAuth */
 router.get('/oauth-redirect', function (req, res, next) {
   // This code stores the user in a server-side session
-  console.log("here");
   client.exchangeOAuthCodeForAccessToken(req.query.code,
                                          clientId,
                                          clientSecret,
@@ -22,6 +21,12 @@ router.get('/oauth-redirect', function (req, res, next) {
         return client.retrieveUserUsingJWT(response.response.access_token);
       })
       .then((response) => {
+        if (!(response.response.user.registrations.length > 0 && response.response.user.registrations[0].applicationId === clientId)) {
+          console.log("User not registered, not authorized.");
+          res.redirect(302, '/');
+          return;
+        }
+      
         req.session.user = response.response.user;
       })
       .then((response) => {
