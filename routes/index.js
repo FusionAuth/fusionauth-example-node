@@ -21,7 +21,7 @@ router.get('/oauth-redirect', function (req, res, next) {
         return client.retrieveUserUsingJWT(response.response.access_token);
       })
       .then((response) => {
-        if (!(response.response.user.registrations.length > 0 && response.response.user.registrations[0].applicationId === clientId)) {
+        if (response.response.user.registrations.length == 0 || (response.response.user.registrations.filter(reg => reg.applicationId === clientId)).length == 0) {
           console.log("User not registered, not authorized.");
           res.redirect(302, '/');
           return;
