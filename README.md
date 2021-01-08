@@ -9,8 +9,7 @@ This assumes you already have a running FusionAuth instance, user and applicatio
 * update your FusionAuth application to allow a redirect of `http://localhost:3000/oauth-redirect`
 * make sure your user has a first name.
 * `npm install`
-* update `routes/index.js` and `views/index.pug` with the client id of your FusionAuth application.
-* update `routes/index.js` with your client secret.
+* update `routes/index.js` with the client id and client secret of your FusionAuth application.
 * `npm start`
 
 Go to http://localhost:3000/ and login with the previously created user.
