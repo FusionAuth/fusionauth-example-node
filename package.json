@@ -13,6 +13,7 @@
     "express-session": "1.17.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
+    "pkce-challenge": "^2.1.0",
     "pug": "2.0.0-beta11"
   }
 }
