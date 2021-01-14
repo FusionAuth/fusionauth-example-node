@@ -1,22 +1,40 @@
 const express = require('express');
 const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
-const clientId = 'dbfc584e-8b46-4e73-9046-cba9938ec4e0';
-const clientSecret = 'g52dmIF-2PCYlv4Pio0gd_vvd_ZO2TW8aRZpCER4QZw';
+const clientId = '85a03867-dccf-4882-adde-1a79aeec50df';
+const clientSecret = '7gh9U0O1wshsrVVvflccX-UL2zxxsYccjdw8_rOfsfE';
 const client = new FusionAuthClient('noapikeyneeded', 'http://localhost:9011');
+const pkceChallenge = require('pkce-challenge');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', {user: req.session.user, title: 'FusionAuth Example', clientId: clientId});
+  const stateValue = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  req.session.stateValue = stateValue;
+
+  //generate the pkce challenge/verifier dict
+  pkce_pair = pkceChallenge();
+  // Store the PKCE verifier in session
+  req.session.verifier = pkce_pair['code_verifier'];
+  const challenge = pkce_pair['code_challenge'];
+  res.render('index', {user: req.session.user, title: 'FusionAuth Example', clientId: clientId, challenge: challenge, stateValue: stateValue});
 });
 
 /* OAuth return from FusionAuth */
 router.get('/oauth-redirect', function (req, res, next) {
+  const stateFromServer = req.query.state;
+  if (stateFromServer !== req.session.stateValue) {
+    console.log("State doesn't match. uh-oh.");
+    console.log("Saw: " + stateFromServer + ", but expected: " + req.session.stateValue);
+    res.redirect(302, '/');
+    return;
+  }
+
   // This code stores the user in a server-side session
-  client.exchangeOAuthCodeForAccessToken(req.query.code,
-                                         clientId,
-                                         clientSecret,
-                                         'http://localhost:3000/oauth-redirect')
+ client.exchangeOAuthCodeForAccessTokenUsingPKCE(req.query.code,
+                                                 clientId,
+                                                 clientSecret,
+                                                 'http://localhost:3000/oauth-redirect',
+                                                 req.session.verifier)
       .then((response) => {
         return client.retrieveUserUsingJWT(response.response.access_token);
       })
