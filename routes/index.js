@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
   req.session.stateValue = stateValue;
 
   //generate the pkce challenge/verifier dict
-  pkce_pair = pkceChallenge();
+  const pkce_pair = pkceChallenge();
   // Store the PKCE verifier in session
   req.session.verifier = pkce_pair['code_verifier'];
   const challenge = pkce_pair['code_challenge'];
