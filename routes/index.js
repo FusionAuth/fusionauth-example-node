@@ -1,10 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
-const clientId = '85a03867-dccf-4882-adde-1a79aeec50df';
-const clientSecret = '7gh9U0O1wshsrVVvflccX-UL2zxxsYccjdw8_rOfsfE';
+
+const clientId = '...';
+const clientSecret = '...';
+
 const client = new FusionAuthClient('noapikeyneeded', 'http://localhost:9011');
 const pkceChallenge = require('pkce-challenge');
+
+/* logout home page. */
+router.get('/logout', function (req, res, next) {
+  req.session.destroy();
+  res.redirect(302, '/');
+});
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -36,6 +44,7 @@ router.get('/oauth-redirect', function (req, res, next) {
                                                  'http://localhost:3000/oauth-redirect',
                                                  req.session.verifier)
       .then((response) => {
+        console.log(response.response.access_token);
         return client.retrieveUserUsingJWT(response.response.access_token);
       })
       .then((response) => {
