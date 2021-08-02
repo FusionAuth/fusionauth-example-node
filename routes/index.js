@@ -63,10 +63,6 @@ router.get('/oauth-redirect', function (req, res, next) {
       }).catch((err) => {console.log("in error"); console.error(JSON.stringify(err));});
       
   // This code pushes the access and refresh tokens back to the browser as secure, HTTP-only cookies
-  // client.exchangeOAuthCodeForAccessToken(req.query.code,
-  //                                        clientId,
-  //                                        clientSecret,
-  //                                        'http://localhost:3000/oauth-redirect')
   //     .then((response) => {
   //       res.cookie('access_token', response.response.access_token, {httpOnly: true});
   //       res.cookie('refresh_token', response.response.refresh_token, {httpOnly: true});
