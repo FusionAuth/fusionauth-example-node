@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
 
+// tag::clientIdSecret[]
 const clientId = '...';
 const clientSecret = '...';
+// end::clientIdSecret[]
 
 const client = new FusionAuthClient('noapikeyneeded', 'http://localhost:9011');
 const pkceChallenge = require('pkce-challenge');
