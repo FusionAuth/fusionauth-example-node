@@ -29,6 +29,7 @@ router.get('/', function (req, res, next) {
   res.render('index', {user: req.session.user, title: 'FusionAuth Example', clientId: clientId, challenge: challenge, stateValue: stateValue});
 });
 
+// tag::fullOAuthCodeExchange[]
 /* OAuth return from FusionAuth */
 router.get('/oauth-redirect', function (req, res, next) {
   const stateFromServer = req.query.state;
@@ -39,12 +40,14 @@ router.get('/oauth-redirect', function (req, res, next) {
     return;
   }
 
+// tag::exchangeOAuthCode[]
   // This code stores the user in a server-side session
  client.exchangeOAuthCodeForAccessTokenUsingPKCE(req.query.code,
                                                  clientId,
                                                  clientSecret,
                                                  'http://localhost:3000/oauth-redirect',
                                                  req.session.verifier)
+// end::exchangeOAuthCode[]
       .then((response) => {
         console.log(response.response.access_token);
         return client.retrieveUserUsingJWT(response.response.access_token);
@@ -69,5 +72,6 @@ router.get('/oauth-redirect', function (req, res, next) {
   //       res.redirect(302, '/');
   //     }).catch((err) => {console.log("in error"); console.error(JSON.stringify(err));});
 });
+// end::fullOAuthCodeExchange[]
 
 module.exports = router;
