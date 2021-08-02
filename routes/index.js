@@ -59,8 +59,10 @@ router.get('/oauth-redirect', function (req, res, next) {
           return;
         }
       
+// tag::setUserInSession[]
         req.session.user = response.response.user;
       })
+// end::setUserInSession[]
       .then((response) => {
         res.redirect(302, '/');
       }).catch((err) => {console.log("in error"); console.error(JSON.stringify(err));});
