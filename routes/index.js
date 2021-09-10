@@ -3,11 +3,12 @@ const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
 
 // tag::clientIdSecret[]
-const clientId = '...';
-const clientSecret = '...';
+const clientId = '85a03867-dccf-4882-adde-1a79aeec50df';
+const clientSecret = 'NkIKQ2MGx3uMBv3uGl9TyYud0MYfdBWCOk-cPQTjiAw';
 // end::clientIdSecret[]
 
-const client = new FusionAuthClient('noapikeyneeded', 'http://localhost:9011');
+const fusionAuthURL = 'http://localhost:9011';
+const client = new FusionAuthClient('noapikeyneeded', fusionAuthURL);
 const pkceChallenge = require('pkce-challenge');
 
 /* logout home page. */
@@ -26,7 +27,7 @@ router.get('/', function (req, res, next) {
   // Store the PKCE verifier in session
   req.session.verifier = pkce_pair['code_verifier'];
   const challenge = pkce_pair['code_challenge'];
-  res.render('index', {user: req.session.user, title: 'FusionAuth Example', clientId: clientId, challenge: challenge, stateValue: stateValue});
+  res.render('index', {user: req.session.user, title: 'FusionAuth Example', clientId: clientId, challenge: challenge, stateValue: stateValue, fusionAuthURL: fusionAuthURL});
 });
 
 // tag::fullOAuthCodeExchange[]
