@@ -27,4 +27,4 @@ jobs:
     # test to see if there are any dependencies that need to be updated
       - run: npm install --package-lock-only
       - run: npm audit
-    # todo: install fusionauth with kickstart, use somethign like this to do an e2e test: https://github.com/cypress-io/github-action
+    # todo: install fusionauth with kickstart, use somethign like this to do an e2e test: https://github.com/cypress-io/github-action 
