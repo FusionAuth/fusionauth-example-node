@@ -1,0 +1,30 @@
+name: test_example
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "test_example"
+  test_example:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: subdir/package-lock.json
+    # test to see if there are any dependencies that need to be updated
+      - run: npm install --package-lock-only
+      - run: npm audit
+    # todo: install fusionauth with kickstart, use somethign like this to do an e2e test: https://github.com/cypress-io/github-action
