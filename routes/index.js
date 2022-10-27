@@ -3,11 +3,14 @@ const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
 
 // tag::clientIdSecret[]
-const clientId = '85a03867-dccf-4882-adde-1a79aeec50df';
-const clientSecret = 'NkIKQ2MGx3uMBv3uGl9TyYud0MYfdBWCOk-cPQTjiAw';
+const clientId = 'cd8c65b6-1f8b-4504-8031-3cee24665964';
+const clientSecret = 'AzJoCXtWuO6LdBQFva5YZfbv0KBOxm2SSRRHTH65eMw';
 // end::clientIdSecret[]
 
+// tag::baseURL[]
 const fusionAuthURL = 'http://localhost:9011';
+// end::baseURL[]
+
 const client = new FusionAuthClient('noapikeyneeded', fusionAuthURL);
 const pkceChallenge = require('pkce-challenge');
 
@@ -62,9 +65,12 @@ router.get('/oauth-redirect', function (req, res, next) {
       
 // tag::setUserInSession[]
         req.session.user = response.response.user;
+        //return response;
       })
 // end::setUserInSession[]
       .then((response) => {
+        console.log("in third");
+        console.log(response);
         res.redirect(302, '/');
       }).catch((err) => {console.log("in error"); console.error(JSON.stringify(err));});
       
