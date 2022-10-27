@@ -6,6 +6,10 @@ on:
   push:
     branches: [ master ]
 
+  # run twice a month, just to doublecheck
+  schedule:
+    - cron: '31 8 5,19 * *'
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
