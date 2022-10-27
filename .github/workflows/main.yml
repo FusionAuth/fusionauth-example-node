@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-          cache-dependency-path: subdir/package-lock.json
+          cache-dependency-path: package-lock.json
     # test to see if there are any dependencies that need to be updated
       - run: npm install --package-lock-only
       - run: npm audit
