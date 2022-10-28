@@ -4,7 +4,7 @@ const {FusionAuthClient} = require('@fusionauth/typescript-client');
 
 // tag::clientIdSecret[]
 const clientId = 'cd8c65b6-1f8b-4504-8031-3cee24665964'; // CHANGE THIS
-const clientSecret = 'AzJoCXtWuO6LdBQFva5YZfbv0KBOxm2SSRRHTH65eMw'; // CHANGE THIS
+const clientSecret = 'KcDq1ZC099nFlQT0AGA-lI3Nautpbt4uqV7O076QfDo'; // CHANGE THIS
 // end::clientIdSecret[]
 
 // tag::baseURL[]
@@ -14,11 +14,13 @@ const fusionAuthURL = 'http://localhost:9011'; // IF NOT RUNNING LOCALLY, CHANGE
 const client = new FusionAuthClient('noapikeyneeded', fusionAuthURL);
 const pkceChallenge = require('pkce-challenge');
 
-/* logout home page. */
+// tag::logoutRoute[]
+/* logout page. */
 router.get('/logout', function (req, res, next) {
   req.session.destroy();
   res.redirect(302, '/');
 });
+// end::logoutRoute[]
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
