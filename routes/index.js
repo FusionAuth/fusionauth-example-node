@@ -68,13 +68,15 @@ router.get('/oauth-redirect', function (req, res, next) {
         res.redirect(302, '/');
       }).catch((err) => {console.log("in error"); console.error(JSON.stringify(err));});
       
-  // This code pushes the access and refresh tokens back to the browser as secure, HTTP-only cookies
+});
+// end::fullOAuthCodeExchange[]
+
+  // This code can be set in the last promise above to send the access and refresh tokens 
+  // back to the browser as secure, HTTP-only cookies, an alternative to storing user info in the session
   //     .then((response) => {
   //       res.cookie('access_token', response.response.access_token, {httpOnly: true});
   //       res.cookie('refresh_token', response.response.refresh_token, {httpOnly: true});
   //       res.redirect(302, '/');
   //     }).catch((err) => {console.log("in error"); console.error(JSON.stringify(err));});
-});
-// end::fullOAuthCodeExchange[]
 
 module.exports = router;
