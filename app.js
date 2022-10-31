@@ -4,6 +4,7 @@ var express = require('express');
 var expressSession = require('express-session');
 var path = require('path');
 var logger = require('morgan');
+var dotenv = require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 
