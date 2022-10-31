@@ -3,12 +3,12 @@ const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
 
 // tag::clientIdSecret[]
-const clientId = 'cd8c65b6-1f8b-4504-8031-3cee24665964'; // CHANGE THIS
-const clientSecret = 'KcDq1ZC099nFlQT0AGA-lI3Nautpbt4uqV7O076QfDo'; // CHANGE THIS
+const clientId = 'cd8c65b6-1f8b-4504-8031-3cee24665964'; // change this
+const clientSecret = 'KcDq1ZC099nFlQT0AGA-lI3Nautpbt4uqV7O076QfDo'; // change this
 // end::clientIdSecret[]
 
 // tag::baseURL[]
-const fusionAuthURL = 'http://localhost:9011'; // IF NOT RUNNING LOCALLY, CHANGE THIS
+const fusionAuthURL = 'http://localhost:9011'; // if not running locally, change this
 // end::baseURL[]
 
 const client = new FusionAuthClient('noapikeyneeded', fusionAuthURL);
