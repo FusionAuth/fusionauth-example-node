@@ -3,8 +3,9 @@ const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
 
 // tag::clientIdSecret[]
-const clientId = process.env.CLIENT_ID;
-const clientSecret = process.env.CLIENT_SECRET;
+// set in the environment or directly
+const clientId = process.env.CLIENT_ID; // or set directly
+const clientSecret = process.env.CLIENT_SECRET; // or set directly
 // end::clientIdSecret[]
 
 // tag::baseURL[]
