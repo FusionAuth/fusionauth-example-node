@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node --dns-result-order ipv4first ./bin/www"
   },
   "dependencies": {
     "@fusionauth/typescript-client": "^1.22.0",
