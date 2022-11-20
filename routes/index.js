@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
 
-// set in the environment or directly
+// these values come from the kickstart/kickstart.json
+// normally they should probably be environment variables
+// or pulled from some other configuration system
 const clientId = 'E9FDB985-9173-4E01-9D73-AC2D60D1DC8E';
 const clientSecret = 'super-secret-secret-that-should-be-regenerated-for-production';
 const fusionAuthURL = 'http://localhost:9011';
