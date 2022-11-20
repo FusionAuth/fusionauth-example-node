@@ -4,12 +4,12 @@ const {FusionAuthClient} = require('@fusionauth/typescript-client');
 
 // tag::clientIdSecret[]
 // set in the environment or directly
-const clientId = process.env.CLIENT_ID; // or set directly
-const clientSecret = process.env.CLIENT_SECRET; // or set directly
+const clientId = 'E9FDB985-9173-4E01-9D73-AC2D60D1DC8E';
+const clientSecret = 'super-secret-secret-that-should-be-regenerated-for-production';
 // end::clientIdSecret[]
 
 // tag::baseURL[]
-const fusionAuthURL = process.env.BASE_URL;
+const fusionAuthURL = 'http://localhost:9011';
 // end::baseURL[]
 
 const client = new FusionAuthClient('noapikeyneeded', fusionAuthURL);
