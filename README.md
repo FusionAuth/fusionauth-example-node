@@ -8,7 +8,7 @@ You will need the following things properly installed on your computer.
 
 * [Git](http://git-scm.com/): Presumably you already have this on your machine if you are looking at this project locally; if not, use your platform's package manager to install git, and `git clone` this repo.
 * [NodeJS](https://nodejs.org): NodeJS can usually be installed using your platform's package manager, or by visiting the NodeJS website and downloading an installer.
-* OPTIONAL: [Docker](https://www.docker.com): If you wish to run FusionAuth from within a Docker container.
+* [Docker](https://www.docker.com): For standing up FusionAuth from within a Docker container. (You can [install it other ways](https://fusionauth.io/docs/v1/tech/installation-guide/)(, but for this example you'll need Docker.)
 
 ## Installation
 * `git clone https://github.com/FusionAuth/fusionauth-example-node`
