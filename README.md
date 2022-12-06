@@ -31,3 +31,4 @@ For now, get FusionAuth in Docker up and running (via `docker-compose up`) if it
 * In a separate terminal window, run `npm start` to start the node application.
 * [Open a browser](http://localhost:3000) and log in using our user's credentials ("richard@example.com"/"password").
 
+Log into the [FusionAuth admin screen](http://localhost:9011) with a different browser or incognito window using the admin user credentials ("admin@example.com"/"password") to explore the admin user experience.
