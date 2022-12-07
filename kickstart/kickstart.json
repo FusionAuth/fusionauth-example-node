@@ -51,7 +51,7 @@
             "tenantId": "#{defaultTenantId}",
             "body": {
               "application": {
-                "name": "exampleapp",
+                "name": "Example app",
                 "oauthConfiguration" : {
                     "authorizedRedirectURLs": ["http://localhost:3000/oauth-redirect"],
                     "clientSecret": "super-secret-secret-that-should-be-regenerated-for-production",
