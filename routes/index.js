@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {FusionAuthClient} = require('@fusionauth/typescript-client');
 
-// these values come from the kickstart/kickstart.json
+// these values come from previous configuration
 // normally they should probably be environment variables
 // or pulled from some other configuration system
 const clientId = 'E9FDB985-9173-4E01-9D73-AC2D60D1DC8E';
