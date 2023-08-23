@@ -5,7 +5,7 @@ const {FusionAuthClient} = require('@fusionauth/typescript-client');
 // these values come from previous configuration
 // normally they should probably be environment variables
 // or pulled from some other configuration system
-const clientId = 'E9FDB985-9173-4E01-9D73-AC2D60D1DC8E';
+const clientId = 'e9fdb985-9173-4e01-9d73-ac2d60d1dc8e';
 const clientSecret = 'super-secret-secret-that-should-be-regenerated-for-production';
 const fusionAuthURL = 'http://localhost:9011';
 
