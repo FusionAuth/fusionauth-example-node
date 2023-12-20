@@ -1,3 +1,6 @@
+**This repo is out of date and is archived. Check out [an updated tutorial on using FusionAuth with Node/Express](https://fusionauth.io/docs/quickstarts/quickstart-javascript-express-web) or [the updated GitHub repository](https://github.com/FusionAuth/fusionauth-quickstart-javascript-express-web).**
+
+
 # Example: Using Node with FusionAuth
 This project is a simple example Node.js application that illustrates how to integrate with FusionAuth's OAuth system using the Authorization Code grant.
 
